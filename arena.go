@@ -52,7 +52,7 @@ func newBucket(size uintptr) bucket {
 	return make(bucket, size, size)
 }
 
-// Creates a new [Arena] allocator, initilizing it to use `bucketSizeBytes`
+// Creates a new [Arena] allocator, initializing it to use `bucketSizeBytes`
 // bucket size.
 func NewArena(bucketSizeBytes uintptr) *Arena {
 	if bucketSizeBytes <= 0 {
@@ -77,14 +77,14 @@ func NumBuckets(a *Arena) int {
 	return len(a.buckets)
 }
 
-// Returns the total number of bytes the arena has allocated accross all
+// Returns the total number of bytes the arena has allocated across all
 // buckets.
 func TotalMemBytes(a *Arena) uintptr {
 	return a.bucketSize * uintptr(len(a.buckets))
 }
 
 // Allocates enough space in the arena to hold a value of type T. The size of T
-// must be less than the bucket size the allocator was initilized with,
+// must be less than the bucket size the allocator was initialized with,
 // otherwise a [ValueToLargeErr] will be returned.
 func Alloc[T any](a *Arena) (weak.Pointer[T], error) {
 	var tmp T
@@ -123,7 +123,7 @@ func Alloc[T any](a *Arena) (weak.Pointer[T], error) {
 // overwriting the memory it previously used.
 //
 // No new memory will be allocated and as such all other pointers that reference
-// this arenas memory can still be used, though they are no longer guarinteed to
+// this arenas memory can still be used, though they are no longer guaranteed to
 // point to valid values.
 func Reset(a *Arena) {
 	for !a.writing.CompareAndSwap(false, true) {
@@ -136,8 +136,7 @@ func Reset(a *Arena) {
 }
 
 // Frees all of the memory that the arena allocated. Calling this function will
-// result in all other pointers that reference this arenas memory to be set to
-// nil.
+// cause all other pointers that reference this arenas memory to be set to nil.
 //
 // The arena can still be used after this operation, it will allocate more
 // memory as needed. If this arena is used to allocate more memory the old
