@@ -1,6 +1,6 @@
-github.com/barbell-math/smoothbrain-bs v0.0.0-20250415081407-fdc0ff2c9d52 h1:pQYaD8vL/b4I7VjX6nKbZiqKf1lHIdck6aCkcWlptxY=
-github.com/barbell-math/smoothbrain-bs v0.0.0-20250415081407-fdc0ff2c9d52/go.mod h1:FQWW2l1VFXaivWjczddZ565lW7JijYX9ox/lyA0rEBg=
-github.com/barbell-math/smoothbrain-errs v0.0.0-20250415081734-4786c7d59be9 h1:hJn/2cqETJP4Nv91uIf33gCB7BKXOK3JEi+W+7T9Mg8=
-github.com/barbell-math/smoothbrain-errs v0.0.0-20250415081734-4786c7d59be9/go.mod h1:YOgWyHDXSHiqud/adCybkoyywzNUi+ia0faw9y1Vong=
-github.com/barbell-math/smoothbrain-test v0.0.0-20250415081647-e83afda15a94 h1:Odu4SvA53S47yswwnRDdfY1u5zWC0EUPhFpjAu+WFa0=
-github.com/barbell-math/smoothbrain-test v0.0.0-20250415081647-e83afda15a94/go.mod h1:Cngin9zc/7/P5GGg90R9ltJoPPl1l9cGG1ZAlexa6o8=
+github.com/barbell-math/smoothbrain-bs v0.0.0-20250425053017-a3279ded0f24 h1:EXl03deedSvUteXVzQbM/Rt9SIhbxBVYOLodz0cS8jo=
+github.com/barbell-math/smoothbrain-bs v0.0.0-20250425053017-a3279ded0f24/go.mod h1:FQWW2l1VFXaivWjczddZ565lW7JijYX9ox/lyA0rEBg=
+github.com/barbell-math/smoothbrain-errs v0.0.0-20250425053108-4f68fa9ea8f4 h1:iOZaBxrd7mcAIlYFToMKks4Zpz53G8myP2MYGj80lZo=
+github.com/barbell-math/smoothbrain-errs v0.0.0-20250425053108-4f68fa9ea8f4/go.mod h1:xAQh5elTwqnV61FPUSPRf+7a1AOtem0vEbt3CAqnLpQ=
+github.com/barbell-math/smoothbrain-test v0.0.0-20250425053258-be7b83b6fb8a h1:3slQ06f1DWCngZXkPNJWsWx9D508awrmtAdF2aejPo0=
+github.com/barbell-math/smoothbrain-test v0.0.0-20250425053258-be7b83b6fb8a/go.mod h1:kav5jFv/ROflLA3qbsbvlqfirRZxqg9nTTQXcrLrUlE=
