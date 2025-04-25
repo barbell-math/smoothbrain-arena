@@ -147,5 +147,5 @@ The build system can then be used as usual:
 
 ```
 ./bs/bs --help
-./bs/bs buildBs # Builds the build system!
+./bs/bs buildbs # Builds the build system!
 ```
