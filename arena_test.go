@@ -163,3 +163,5 @@ func TestClear(t *testing.T) {
 		sbtest.Eq(t, *vals2[i].Value(), testStruct{A: i, B: float64(i), C: str})
 	}
 }
+
+// TODO - test concurrency
