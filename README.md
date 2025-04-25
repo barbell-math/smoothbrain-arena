@@ -8,6 +8,8 @@
 import "github.com/barbell-math/smoothbrain-arena"
 ```
 
+A very simple library that implements an arena allocator in 100% golang.
+
 ## Index
 
 - [Constants](<#constants>)
@@ -47,7 +49,7 @@ var (
 ```
 
 <a name="Alloc"></a>
-## func [Alloc](<https://github.com/barbell-math/smoothbrain-arena/blob/main/arena.go#L106>)
+## func [Alloc](<https://github.com/barbell-math/smoothbrain-arena/blob/main/arena.go#L107>)
 
 ```go
 func Alloc[T any](a *Arena) (weak.Pointer[T], error)
@@ -56,7 +58,7 @@ func Alloc[T any](a *Arena) (weak.Pointer[T], error)
 Allocates enough space in the arena to hold a value of type T. The size of T must be less than the bucket size the allocator was initialized with, otherwise a [ValueToLargeErr](<#ValueToLargeErr>) will be returned.
 
 <a name="BucketSizeBytes"></a>
-## func [BucketSizeBytes](<https://github.com/barbell-math/smoothbrain-arena/blob/main/arena.go#L88>)
+## func [BucketSizeBytes](<https://github.com/barbell-math/smoothbrain-arena/blob/main/arena.go#L89>)
 
 ```go
 func BucketSizeBytes(a *Arena) uintptr
@@ -65,7 +67,7 @@ func BucketSizeBytes(a *Arena) uintptr
 Returns the bucket size for the given arena.
 
 <a name="Clear"></a>
-## func [Clear](<https://github.com/barbell-math/smoothbrain-arena/blob/main/arena.go#L161>)
+## func [Clear](<https://github.com/barbell-math/smoothbrain-arena/blob/main/arena.go#L162>)
 
 ```go
 func Clear(a *Arena)
@@ -76,7 +78,7 @@ Frees all of the memory that the arena allocated. Calling this function will cau
 The arena can still be used after this operation, it will allocate more memory as needed. If this arena is used to allocate more memory the old memory will not be reused.
 
 <a name="NumBuckets"></a>
-## func [NumBuckets](<https://github.com/barbell-math/smoothbrain-arena/blob/main/arena.go#L93>)
+## func [NumBuckets](<https://github.com/barbell-math/smoothbrain-arena/blob/main/arena.go#L94>)
 
 ```go
 func NumBuckets(a *Arena) int
@@ -85,7 +87,7 @@ func NumBuckets(a *Arena) int
 Gets the number of buckets that the arena has currently allocated.
 
 <a name="Reset"></a>
-## func [Reset](<https://github.com/barbell-math/smoothbrain-arena/blob/main/arena.go#L145>)
+## func [Reset](<https://github.com/barbell-math/smoothbrain-arena/blob/main/arena.go#L146>)
 
 ```go
 func Reset(a *Arena)
@@ -96,7 +98,7 @@ Resets the internal state of the arena so that it starts to reuse memory, overwr
 No new memory will be allocated and as such all other pointers that reference this arenas memory can still be used, though they are no longer guaranteed to point to valid values.
 
 <a name="TotalMemBytes"></a>
-## func [TotalMemBytes](<https://github.com/barbell-math/smoothbrain-arena/blob/main/arena.go#L99>)
+## func [TotalMemBytes](<https://github.com/barbell-math/smoothbrain-arena/blob/main/arena.go#L100>)
 
 ```go
 func TotalMemBytes(a *Arena) uintptr
@@ -105,7 +107,7 @@ func TotalMemBytes(a *Arena) uintptr
 Returns the total number of bytes the arena has allocated across all buckets.
 
 <a name="Arena"></a>
-## type [Arena](<https://github.com/barbell-math/smoothbrain-arena/blob/main/arena.go#L42-L49>)
+## type [Arena](<https://github.com/barbell-math/smoothbrain-arena/blob/main/arena.go#L43-L50>)
 
 A dynamic arena allocator that is backed by buckets. Objects that are larger than the bucket size cannot be stored in the area. The bucket size can be specified when calling [NewArena](<#NewArena>).
 
@@ -122,7 +124,7 @@ type Arena struct {
 ```
 
 <a name="NewArena"></a>
-### func [NewArena](<https://github.com/barbell-math/smoothbrain-arena/blob/main/arena.go#L74>)
+### func [NewArena](<https://github.com/barbell-math/smoothbrain-arena/blob/main/arena.go#L75>)
 
 ```go
 func NewArena(bucketSizeBytes uintptr) Arena
