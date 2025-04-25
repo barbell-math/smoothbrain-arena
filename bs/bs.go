@@ -1,6 +1,8 @@
 package main
 
 import (
+	"context"
+
 	sbbs "github.com/barbell-math/smoothbrain-bs"
 )
 
@@ -19,5 +21,16 @@ func main() {
 		CheckFmt:             true,
 		CheckUnitTests:       true,
 	})
+
+	sbbs.RegisterTarget(
+		context.Background(),
+		"race",
+		sbbs.Stage(
+			"Run go test -race",
+			func(ctxt context.Context, cmdLineArgs ...string) error {
+				return sbbs.RunStdout(ctxt, "go", "test", "-v", "-race")
+			},
+		),
+	)
 	sbbs.Main("bs")
 }

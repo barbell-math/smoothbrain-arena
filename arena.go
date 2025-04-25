@@ -10,11 +10,26 @@ import (
 )
 
 type (
+	// This code is copied from the std lib's [sync] package:
+	// https://cs.opensource.google/go/go/+/master:src/sync/cond.go;l=111?q=noCopy&ss=go%2Fgo
+	//
+	// noCopy may be added to structs which must not be copied after the first
+	// use.
+	//
+	// See https://golang.org/issues/8005#issuecomment-190753527
+	// for details.
+	//
+	// Note that it must not be embedded, due to the Lock and Unlock methods.
+	noCopy struct{}
+
 	bucket []byte
 
 	// A dynamic arena allocator that is backed by buckets. Objects that are
 	// larger than the bucket size cannot be stored in the area. The bucket size
 	// can be specified when calling [NewArena].
+	//
+	// An Arena must *not* be copied by value, this will invalidate the
+	// atomics protecting allocation operations.
 	//
 	// Go is a GC'ed language, so you cannot control exactly when the GC will
 	// free the arena but when it does all of the objects that it stores will
@@ -24,10 +39,8 @@ type (
 	// An Arena is thread safe for allocations and frees, though once the arena
 	// is freed all pointers to the data it contained will be invalidated and
 	// set to nil.
-	//
-	// An Arena should *not* be copied by value, this will invalidate the
-	// atomics protecting allocation operations.
 	Arena struct {
+		_          noCopy
 		buckets    []bucket
 		curBucket  int
 		bytesLeft  uintptr
@@ -48,18 +61,22 @@ var (
 	)
 )
 
+// Lock is a no-op used by -copylocks checker from `go vet`.
+func (*noCopy) Lock()   {}
+func (*noCopy) Unlock() {}
+
 func newBucket(size uintptr) bucket {
 	return make(bucket, size, size)
 }
 
 // Creates a new [Arena] allocator, initializing it to use `bucketSizeBytes`
 // bucket size.
-func NewArena(bucketSizeBytes uintptr) *Arena {
+func NewArena(bucketSizeBytes uintptr) Arena {
 	if bucketSizeBytes <= 0 {
 		bucketSizeBytes = DefaultBlockSize
 	}
 
-	return &Arena{
+	return Arena{
 		buckets:    []bucket{newBucket(uintptr(bucketSizeBytes))},
 		curBucket:  0,
 		bytesLeft:  uintptr(bucketSizeBytes),
